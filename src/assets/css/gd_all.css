@@ -1,0 +1,83 @@
+.gd {
+  width: 100%;
+  background: #ffffff; }
+  .gd > p > a {
+    font-size: 0.35rem;
+    margin-left: 0.2rem;
+    color: #333333;
+    line-height: 0.7rem; }
+  .gd > P span {
+    font-size: 0.3rem;
+    color: #333333; }
+  .gd > P > span {
+    float: right;
+    margin-top: 0.15rem;
+    margin-right: 0.2rem; }
+    .gd > P > span > span.active {
+      color: #b7443e; }
+  .gd .item {
+    margin-top: 0.2rem; }
+    .gd .item li {
+      display: inline-block;
+      width: 50%;
+      margin-top: 0.2rem;
+      padding: 0 0.1rem;
+      vertical-align: top; }
+      .gd .item li img {
+        border-radius: 0.15rem;
+        width: 100%; }
+      .gd .item li p {
+        font-size: 0.3rem;
+        line-height: 0.4rem;
+        margin-top: 0.1rem;
+        color: #333333; }
+  .gd .cat {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 99;
+    background: #ffffff;
+    top: 0; }
+    .gd .cat h1 {
+      font-size: 0.35rem;
+      color: #ffffff;
+      background: #B7443E;
+      line-height: 0.8rem;
+      padding-left: 0.2rem; }
+      .gd .cat h1 span {
+        font-size: 0.35rem;
+        color: #ffffff;
+        line-height: 0.8rem;
+        margin-right: 0.5rem;
+        padding: 0.2rem; }
+    .gd .cat > div {
+      padding: 0 0.2rem;
+      margin-top: 0.3rem; }
+      .gd .cat > div li.all {
+        font-size: 0.3rem;
+        border: 1px solid #B7443E;
+        display: block;
+        line-height: 0.6rem;
+        text-align: center; }
+      .gd .cat > div li b {
+        color: #b7443e;
+        margin-top: 0.2rem;
+        margin-bottom: 0.2rem; }
+      .gd .cat > div li b, .gd .cat > div li span {
+        font-size: 0.3rem;
+        display: inline-block;
+        width: calc(100% / 6);
+        text-align: center;
+        vertical-align: top;
+        margin: 0.1rem 0; }
+
+.more {
+  display: block;
+  margin: 0 auto;
+    margin-top: 0.3rem;
+  font-size: 0.35rem;
+  background: #b7443e;
+  border: none;
+  padding: 0.2rem 0.3rem;
+  border-radius: 0.1rem;
+  color: #ffffff; }

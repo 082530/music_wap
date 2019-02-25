@@ -1,0 +1,115 @@
+@font-face {font-family: "iconfont";
+  src: url('//at.alicdn.com/t/font_1018768_yntt3m66zje.eot?t=1547629980149'); /* IE9 */
+  src: url('//at.alicdn.com/t/font_1018768_yntt3m66zje.eot?t=1547629980149#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('data:application/x-font-woff2;charset=utf-8;base64,d09GMgABAAAAAANAAAsAAAAABzwAAALyAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHEIGVgCDBgqCIIITATYCJAMMCwgABCAFhG0HORtcBsgekiQBeUwIUBBtCIQoHj7X/j03ydsPAIqwaHk8IUsgISt8x9fYqkrW1Tuk9/4V8lV6Ggs7uKRpcGHNSV/Sbgwbh+nr5I5ZgNqePoj9IHVwTf6yFT6uDmhOkWGRtMbHAY6TBxRdZJvIxHyPsYHa7W4m0GpSBrudZTUtwFVh9grENY4lgGvGrDSkh2ahqphYxGcNzelNeo5Pwffjn/XRTNLIzK12XSilQcFP/JzLr+pyLM95NZ0T/DQylgCFOFHpPsQhii5x0KoqHbV8oFKENFWgrgnEmrKy/vBIgqiYqe1gjsQSPzniRDOH0qtOzaDCpP2AJ0xaPzLL7T9tG21/6nv6/tyDZL9T547d7fFdfzz3xMPv3aVDD7uScP9r7/+EBx/86Ptt5+8nfPp64KNa3rP1wx3cey219dFG/pM58r0qyG7/NA2Y9RZ3yT7Wrlteo/+6hnZ3hQKLUKj9m4bmUo/048uaabd3vVdh8QTHTRQXetV471l6tjk6FvtvW2dCUyVtbqJlfmJivsVeTBVTQ2dbQ0Hc41Fbvy2+r/u2wEYCixUiZZEHDDDZ+Wf6Ov6q2OXXv2A3HZu/Pun3yfkfbQV8Px98MJB3S6ZZorPkhTsLqE17CU2GllwUlUax4c3WnbwzgULBp2b6e/0crh+4KWdozkh4SJpMQNZsCinEEjS02QiVZlug1aLy6W36qBxEacGCJYDQ7Qoknb5B1u0FUogf0DDoF1S6I0OrAxGwYJuZuOxerCJCRzQkxyBHYYmxbbp7mN6EWEMg1LQsYLchVeMC0Gqy5BPlSELqFEO0Ydam6wxkVCzCMtgOCQKGsoqHEKWbBnVdzjKbmao3mSgsAnc7qBCCDqFBpDEQh4JJGK+4zr3w+SYIyyAgqA2UqmAbRKXh6oesTCwdkHK11IlyK9dohrFsdDoGxFBhIqgM2iECAQbJ1e2GIBSdyeCAsCyL2SrEdFWblteK77cEWpkr50iRo6jOEhxNSM4aNjQDAwAAAA==') format('woff2'),
+  url('//at.alicdn.com/t/font_1018768_yntt3m66zje.woff?t=1547629980149') format('woff'),
+  url('//at.alicdn.com/t/font_1018768_yntt3m66zje.ttf?t=1547629980149') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
+  url('//at.alicdn.com/t/font_1018768_yntt3m66zje.svg?t=1547629980149#iconfont') format('svg'); /* iOS 4.1- */
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-caidan:before {
+  content: "\e628";
+}
+
+.icon-sousuo:before {
+  content: "\e600";
+}
+.hello{
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  >div{
+    position: relative;
+    transition: left 0.5s linear;
+  }
+}
+header{
+  height: 1rem;
+  .iconfont{
+    font-size: 0.5rem;
+    color: #ffffff;
+    line-height: 1rem;
+    vertical-align: middle;
+  }
+  padding: 0 0.2rem;
+  a{
+    font-size: 0.3rem;
+    color: #ffffff;
+    text-align: center;
+    display: inline-block;
+    width: 22%;
+    vertical-align: middle;
+    line-height: 1rem;
+  }
+}
+aside{
+  position: fixed;
+  width: 7.5rem;
+  height: 100%;
+  top: 0;
+  transition: all 0.5s linear;
+  a{
+    font-size: 0.25rem;
+  }
+  ul{
+    width: 4rem;
+    background: #ffffff;
+    height: 100%;
+    position: relative;
+    transition: left 0.5s linear;
+    display: inline-block;
+  }
+  li{
+    a{
+      display: inline-block;
+      color: #333333;
+      font-size: 0.35rem;
+      line-height: 1rem;
+    }
+    padding-left: 0.2rem !important;
+  }
+  li.user{
+    padding: 0.3rem 0;
+    img{
+      width: 35%;
+      vertical-align: middle;
+    }
+    span{
+      font-size: 0.3rem;
+      margin-left: 0.2rem;
+      vertical-align: middle;
+      display: inline-block;
+      width: 2rem;
+      overflow: hidden;
+    }
+    border-bottom: 0.02rem solid #666;
+  }
+}
+
+.search_ico{
+  margin-bottom: 0.3rem;
+  p{
+    width: 100%;
+    height: 0.5rem;
+    line-height: 0.5rem;
+    font-size: 0.3rem;
+    color: #ffffff;
+    background: rgba(255,255,255,0.3);
+    text-align: center;
+    border-radius: 0.5rem;
+    i{
+      font-size: 0.3rem;
+      line-height: normal;
+      vertical-align: baseline;
+      margin-right: 0.1rem;
+    }
+  }
+}
