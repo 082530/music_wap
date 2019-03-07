@@ -47,9 +47,8 @@ export default {
           alert('账号或密码错误')
         })
       } else if (/^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/.test(this.user)) {
-        // this.$.defaults.withCredentials = true
         this.$.get(`${this.url}/login?email=${this.user}&password=${this.pwd}`, {withCredentials: true}).then(function (res) {
-          console.log(res)
+          // console.log(res)
           that.set1(res.data)
         }).catch(function (err) {
           alert('账号或密码错误')
@@ -64,7 +63,7 @@ export default {
   .login{
     width: 100%;
     height: 100%;
-    background: url("../assets/login.jpg") no-repeat center top;
+    background: url("./../assets/login.jpg") no-repeat center top;
     background-size: cover;
   }
   label{

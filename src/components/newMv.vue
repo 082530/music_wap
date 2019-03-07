@@ -8,12 +8,17 @@
             </router-link>
           </li>
         </ul>
+      <load v-show="list===''"></load>
     </div>
 </template>
 
 <script>
+import loading from './loading'
 export default {
   name: 'newMv',
+  components: {
+    load: loading
+  },
   data () {
     return {
       // url: 'http://127.0.0.1:3000',

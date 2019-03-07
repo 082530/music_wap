@@ -1,5 +1,6 @@
 <template>
     <div class="gd">
+      <load v-show="list===''"></load>
         <p>
           <a @click="open=true">{{tag}}>></a>
           <span>
@@ -40,9 +41,12 @@
 </template>
 
 <script>
+import loading from './loading'
 export default {
-
   name: 'gd_all',
+  components: {
+    load: loading
+  },
   data () {
     return {
       tag: '全部',

@@ -1,17 +1,18 @@
 <template>
   <div class="gd">
+    <load v-show="detail===''"></load>
     <h1>歌单</h1>
       <div class="info">
         <img :src="`${detail.coverImgUrl}?param=140y140`" alt="">
         <p>
           <span>{{detail.name}}</span>
-          <span><img :src="`${detail.creator.avatarUrl}?param=20y20`" alt="">{{detail.creator.nickname}}</span>
+          <span><img :src="`${detail.creator&&detail.creator.avatarUrl}?param=20y20`" alt="">{{detail.creator&&detail.creator.nickname}}</span>
         </p>
       </div>
     <!--列表-->
     <div class="box">
       <p>
-        <span @click="addSong({type:2,info:detail.tracks})"><i></i>全部播放</span><a>(共{{detail.tracks.length}}首)</a>
+        <span @click="addSong({type:2,info:detail.tracks})"><i></i>全部播放</span><a>(共{{detail.tracks&&detail.tracks.length}}首)</a>
       </p>
       <table>
         <tbody>
@@ -73,9 +74,13 @@
 </template>
 
 <script>
-  import {mapMutations} from 'vuex'
+import {mapMutations} from 'vuex'
+import loading from './loading'
 export default {
   name: 'gd',
+  components: {
+    load: loading
+  },
   data () {
     return {
       url: 'http://ruidong.cloudno.de',

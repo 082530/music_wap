@@ -1,8 +1,10 @@
 <template>
   <div id="app">
+    <transition name="fade" mode="out-in">
     <keep-alive include="search">
       <router-view/>
     </keep-alive>
+    </transition>
     <!--播放器mini-->
     <div @click.self="play_big_open=true" :style="type!=0&&big_box==false?'bottom:0':'bottom:-1.5rem'" class="play_mini">
       <img @click.self="play_big_open=true" :src="`${nowSong.img}?param=50y50`" alt="">
@@ -297,6 +299,12 @@ export default {
   @import "assets/css/play.css";
 </style>
 <style>
+  .fade-enter-active, .fade-leave-active {
+    transition: opacity .5s;
+  }
+  .fade-enter, .fade-leave-to  {
+    opacity: 0;
+  }
 *{
   font-size: 0;
   font-family: 微软雅黑;
@@ -308,6 +316,9 @@ export default {
 }
   html,body,#app{width: 100%;height: 100%;overflow-x: hidden}
   #app{
-    background: url("assets/bg.jpg") no-repeat center top;
+    background: url("./assets/bg.jpg") no-repeat center top;
   }
+.play_mini > span:last-of-type{
+  width: 2rem;
+}
 </style>

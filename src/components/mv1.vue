@@ -1,6 +1,6 @@
 <template>
   <div class="play">
-      <video id="video" :src="src" controls></video>
+      <video preload="none" :poster="data.coverUrl" id="video" :src="vUrl" controls></video>
     <div class="description">
       <p>{{data.title}}--{{data.creator.nickname}}</p>
       <p>
@@ -25,13 +25,18 @@
         </li>
       </ul>
     </div>
+    <!--<load v-show="data===''&&src===''&&vUrl"></load>-->
   </div>
 </template>
 
 <script>
 import {mapMutations} from 'vuex'
+// import loading from './loading'
 export default {
   name: 'play',
+  // components: {
+  //   load: loading
+  // },
   data () {
     return {
       url: 'http://ruidong.cloudno.de',
@@ -39,30 +44,15 @@ export default {
       id: this.$route.params.id,
       data: '',
       otherlist1: '',
-      src: ''
+      src: '',
+      vUrl: ''
     }
   },
   methods: {
     ...mapMutations(['settype']),
     load () {
-      new Promise(resolve => {
-        this.$.get(this.url + '/video/url?id=' + this.id).then(function (data) {
-          resolve(data.data)
-        })
-      }).then(data => {
-        this.data = data.data
-        return data.urls[0].url
-      }).then(src => {
-        // var videoObject = {
-        //   container: '#video', // “#”代表容器的ID，“.”或“”代表容器的class
-        //   variable: 'player', // 该属性必需设置，值等于下面的new chplayer()的对象
-        //   // flashplayer:true,// 如果强制使用flashplayer则设置成true
-        //
-        //   video: src// 视频地址
-        // }
-        // // console.log(videoObject)
-        // let player = new ckplayer(videoObject)
-        this.src = src
+      this.$.get(this.url + '/video/url?id=' + this.id).then(data => {
+        this.vUrl = data.data.urls[0].url
       })
       this.$.get(`${this.url}/related/allvideo?id=${this.id}`).then(res => {
         this.otherlist1 = res.data.data

@@ -1,12 +1,13 @@
 <template>
   <div class="gd">
+    <load v-show="list===''"></load>
     <h1>专辑</h1>
       <div class="info">
         <img :src="`${detail.picUrl}?param=140y140`" alt="">
         <p>
           <span>{{detail.name}}</span>
-          <router-link :to="{name:'songer',params: {id:detail.artist.id}}">
-          <span>歌手：<img :src="`${detail.artist.picUrl}?param=20y20`" alt="">{{detail.artist.name}}</span>
+          <router-link :to="{name:'songer',params: {id:detail.artist&&detail.artist.id}}">
+          <span>歌手：<img :src="`${detail.artist&&detail.artist.picUrl}?param=20y20`" alt="">{{detail.artist&&detail.artist.name}}</span>
           </router-link>
         </p>
       </div>
@@ -76,9 +77,13 @@
 </template>
 
 <script>
-  import {mapMutations} from 'vuex'
+import {mapMutations} from 'vuex'
+import loading from './loading'
 export default {
   name: 'gd',
+  components: {
+    load: loading
+  },
   data () {
     return {
       url: 'http://ruidong.cloudno.de',

@@ -13,6 +13,7 @@ import gdAll from '@/components/gd_all'
 import search from '@/components/search'
 import newMv from '@/components/newMv'
 import phb from '@/components/phb'
+import dt from '@/components/dt'
 
 Vue.use(Router)
 
@@ -80,6 +81,11 @@ export default new Router({
       path: '/gdAll',
       name: 'gdAll',
       component: gdAll
+    },
+    {
+      path: '/dt/:id',
+      name: 'dt',
+      component: dt
     }
   ]
 })

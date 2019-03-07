@@ -5,7 +5,7 @@ import App from './App'
 import router from './router'
 import store from './store'
 import axios from 'axios'
-import ckplayer from './assets/ckplayer'
+// import ckplayer from './assets/ckplayer'
 Vue.prototype.$ = axios
 Vue.config.productionTip = false
 /* eslint-disable no-new */

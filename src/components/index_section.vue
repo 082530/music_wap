@@ -1,5 +1,6 @@
 <template>
     <div class="section">
+      <load v-show="banner===''&&gd_list===''&&new_m===''"></load>
       <ul class="ba">
         <li :class="key===state?'active':''" v-for="(item,key) in banner" @click="a(item,$event)">
           <router-link :to="{name:item.targetType==10?'album':item.targetType==1004?'play1':item.targetType==1000?'gd':'*',params:{id:item.encodeId}}">
@@ -42,40 +43,44 @@
 </template>
 
 <script>
-  import {mapMutations} from 'vuex'
-    export default {
-        name: 'index_section',
-      data () {
-          return {
-            url: 'http://ruidong.cloudno.de',
-            // url: 'http://127.0.0.1:3000',
-            banner: '',
-            state: 0,
-            gd_list: '',
-            new_m: '',
-            dt: ''
-          }
-      },
-      beforeMount () {
-        let that = this
-        this.$.get(`${this.url}/banner`).then(function (res) {
-          // console.log(res.data)
-          that.banner = res.data.banners
-          setInterval(function () {
-            that.state++
-            if (that.state >= that.banner.length) that.state = 0
-          }, 5000)
-        })
-        this.$.get(`${this.url}/personalized?limit=6`).then(function (res) {
-           console.log(res.data)
-          that.gd_list = res.data.result
-        })
-        this.$.get(`${this.url}/personalized/newsong`).then(function (res) {
-          // console.log(res.data)
-          that.new_m = res.data.result
-        })
-      },
-      methods: {
+import {mapMutations} from 'vuex'
+import loading from './loading'
+export default {
+  name: 'index_section',
+  components: {
+    load: loading
+  },
+  data () {
+    return {
+      url: 'http://ruidong.cloudno.de',
+      // url: 'http://127.0.0.1:3000',
+      banner: '',
+      state: 0,
+      gd_list: '',
+      new_m: '',
+      dt: ''
+    }
+  },
+  beforeMount () {
+    let that = this
+    this.$.get(`${this.url}/banner`).then(function (res) {
+      // console.log(res.data)
+      that.banner = res.data.banners
+      setInterval(function () {
+        that.state++
+        if (that.state >= that.banner.length) that.state = 0
+      }, 5000)
+    })
+    this.$.get(`${this.url}/personalized?limit=6`).then(function (res) {
+      console.log(res.data)
+      that.gd_list = res.data.result
+    })
+    this.$.get(`${this.url}/personalized/newsong`).then(function (res) {
+      // console.log(res.data)
+      that.new_m = res.data.result
+    })
+  },
+  methods: {
     ...mapMutations(['addSong']),
     a (item, e) {
       if (item.targetType === 1) {
@@ -88,7 +93,7 @@
       console.log(item)
       this.addSong({type: 1, info: {id: item.id, name: item.name, img: item.song.artists[0].picUrl, autor: item.song.artists[0].name}})
     }
-  }
+}
 }
 </script>
 

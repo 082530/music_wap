@@ -18,38 +18,42 @@
         </li>
       </ul>
     </div>
+    <load v-show="albumlist===''&&mvlist===''"></load>
   </div>
 </template>
 
-<script>
-  import {mapState} from 'vuex'
-  export default {
-    name: 'uDetail',
-    data () {
-      return {
-        uid: this.$route.params.id,
-        url: 'http://ruidong.cloudno.de',
-        // url: 'http://127.0.0.1:3000',
-        gedan: 0
-      }
-    },
-    computed: {
-      ...mapState({
-        img: state => state.userImg,
-        uname: state => state.userName
-      })
-    },
-    beforeMount () {
-      let that = this
-      this.$.get(`${this.url}/user/subcount`, {withCredentials: true}).then(function (res) {
-        console.log(res)
-        let data = res.data
-        that.gedan = data.createdPlaylistCount
-      }).catch(function (err) {
-        console.log(err)
-      })
+<script>import {mapState} from 'vuex'
+// import loading from './loading'
+export default {
+  name: 'uDetail',
+  // components: {
+  //   load: loading
+  // },
+  data () {
+    return {
+      uid: this.$route.params.id,
+      url: 'http://ruidong.cloudno.de',
+      // url: 'http://127.0.0.1:3000',
+      gedan: 0
     }
+  },
+  computed: {
+    ...mapState({
+      img: state => state.userImg,
+      uname: state => state.userName
+    })
+  },
+  beforeMount () {
+    let that = this
+    this.$.get(`${this.url}/user/subcount`, {withCredentials: true}).then(function (res) {
+      // console.log(res)
+      let data = res.data
+      that.gedan = data.createdPlaylistCount
+    }).catch(function (err) {
+      console.log(err)
+    })
   }
+}
 </script>
 
 <style scoped>

@@ -15,7 +15,7 @@
       <!--单曲-->
       <div v-if="type==1" v-show="sh" class="box">
         <p>
-          <span>单曲</span><a>(共{{list.songs!=undefined && list.songs.length}}首)</a>
+          <span>单曲</span><a>(共{{list.songs?list.songs.length : 0}}首)</a>
         </p>
         <table>
           <tbody>
@@ -44,7 +44,7 @@
       <!--歌单-->
       <div v-else-if="type==1000" v-show="sh" class="box">
         <p>
-          <span>歌单</span><a>(共{{list.songs!=undefined && list.songs.length}}首)</a>
+          <span>歌单</span><a>(共{{list.playlists?list.playlists.length : 0}}首)</a>
         </p>
         <table>
           <tbody>
@@ -68,7 +68,7 @@
       <!--MV-->
       <div v-else-if="type==1004" v-show="sh" class="box">
         <p>
-          <span>MV</span><a>(共{{list.mvs!=undefined && list.mvs.length}}首)</a>
+          <span>MV</span><a>(共{{list.mvs?list.mvs.length : 0}}首)</a>
         </p>
         <table>
           <tbody>
@@ -92,22 +92,22 @@
       <!--电台-->
       <div v-else-if="type==1009" v-show="sh" class="box">
         <p>
-          <span>电台</span><a>(共{{list.songs!=undefined && list.songs.length}}首)</a>
+          <span>电台</span><a>(共{{list.djRadios?list.djRadios.length : 0}}首)</a>
         </p>
         <table>
           <tbody>
           <tr v-for="(item,key) in list.djRadios">
             <td>{{key+1}}</td>
             <td>
-            <span @click="addSong({type:1,info:{id:item.id,name:item.name,img:item.artists[0].img1v1Url,autor:item.artists[0].name}})">
+            <span>
+              <router-link :to="{name:'dt',params: {id: item.id}}">
               <p>{{item.name}}</p>
-              <span v-if="item.alias[0]">{{`-(${item.alias[0]})`}}</span>
+              <span v-if="item.dj.signature">{{`-(${item.dj.signature})`}}</span>
+              </router-link>
             </span>
             </td>
             <td>
-              <router-link :to="{name:'play',params:{id:item.mv}}">
-                <i v-if="item.mv"></i>
-              </router-link>
+
             </td>
             <td @click.stop="more(item.id,item.album,item.artists[0],item.name)">
             <span>
@@ -121,7 +121,7 @@
       <!--视频-->
       <div v-else-if="type==1014" v-show="sh" class="box">
         <p>
-          <span>视频</span><a>(共{{list.songs!=undefined && list.songs.length}}首)</a>
+          <span>视频</span><a>(共{{list.videos?list.videos.length:0}}首)</a>
         </p>
         <table>
           <tbody>

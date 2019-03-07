@@ -1,6 +1,8 @@
 <template>
   <div class="play">
-    <div id="video" ref="video"></div>
+    <div id="video" ref="video">
+      <video controls :poster="data.cover" :src="data.brs&&data.brs['480']"></video>
+    </div>
     <div class="description">
       <p>{{data.name}}<span>--{{data.artistName}}</span></p>
       <p>
@@ -37,39 +39,15 @@ export default {
       url: 'http://ruidong.cloudno.de',
       // url: 'http://127.0.0.1:3000',
       id: this.$route.params.id,
-      data: '',
-      otherlist: ''
+      otherlist: '',
+      data: '123'
     }
   },
   methods: {
     ...mapMutations(['settype']),
     load () {
-      new Promise(resolve => {
-        this.$.get(this.url + '/mv/detail?mvid=' + this.id).then(function (data) {
-          resolve(data.data)
-        })
-      }).then(data => {
-        let src = []
-        for (let key in data.data.brs) {
-          let arr = []
-          arr.push(data.data.brs[key])
-          arr.push('video/mp4')
-          arr.push(key)
-          arr.push(0)
-          src.push(arr)
-        }
-        this.data = data.data
-        return src
-      }).then(src => {
-        var videoObject = {
-          container: '#video', // “#”代表容器的ID，“.”或“”代表容器的class
-          variable: 'player', // 该属性必需设置，值等于下面的new chplayer()的对象
-          // flashplayer:true,// 如果强制使用flashplayer则设置成true
-
-          video: src// 视频地址
-        }
-        // console.log(videoObject)
-        let player = new ckplayer(videoObject)
+      this.$.get(this.url + '/mv/detail?mvid=' + this.id).then(data => {
+        this.data = data.data.data
       })
       this.$.get(`${this.url}/related/allvideo?id=${this.id}`).then(res => {
         this.otherlist = res.data.data
@@ -92,4 +70,9 @@ export default {
 
 <style scoped>
 @import "../assets/css/mvplay.css";
+  #video video{
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+  }
 </style>

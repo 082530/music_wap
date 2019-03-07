@@ -109,13 +109,18 @@
         </div>
 
       </div>
+      <load v-show="albumlist===''&&mvlist===''"></load>
     </div>
 </template>
 
 <script>
 import {mapMutations} from 'vuex'
+import loading from './loading'
 export default {
   name: 'songer',
+  components: {
+    load: loading
+  },
   data () {
     return {
       url: 'http://ruidong.cloudno.de',
