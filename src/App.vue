@@ -120,11 +120,11 @@ export default {
   },
   methods: {
     ...mapMutations(['dele']),
-    tmove (e) {
-      let a = e.changedTouches[0].pageX
-      let b = this.$refs['left'].getBoundingClientRect()
-      let left = b.x // 进度条到左边的距离
-      let width = b.width // 进度条的长度
+    tmove (e) { // 触摸移动进度条
+      const a = e.changedTouches[0].pageX
+      const b = this.$refs['left'].getBoundingClientRect()
+      const left = b.x // 进度条到左边的距离
+      const width = b.width // 进度条的长度
       let widthMove = ((a - left) / width) * 100
       widthMove < 0 ? widthMove = 0 : widthMove > 100 ? widthMove = 100 : ''
       // console.log(widthMove)
@@ -134,14 +134,14 @@ export default {
       // console.log(setTime)
     },
     tend () {
-      let p = document.querySelectorAll('.content>div>p')
-      for (let i = 0; i < p.length; i++) {
+      const p = document.querySelectorAll('.content>div>p')
+      for (let i = 0, n = p.length; i < n; i++) {
         if (p[i].className === 'active') return i++
       }
     },
     pre () {
       let n
-      for (let i = 0; i < this.playList.length; i++) {
+      for (let i = 0, s = this.playList.length; i < s; i++) {
         if (this.playList[i].id === this.nowSong.id) {
           n = i - 1
           if (i === 0) n = this.playList.length - 1
@@ -152,7 +152,7 @@ export default {
     },
     next () {
       let n
-      for (let i = 0; i < this.playList.length; i++) {
+      for (let i = 0, s = this.playList.length; i < s; i++) {
         if (this.playList[i].id === this.nowSong.id) {
           n = i + 1
           if (i === this.playList.length - 1) n = 0
@@ -291,6 +291,21 @@ export default {
     type (val) {
       // console.log(val)
       if (val == 0) if (document.getElementsByTagName('audio')[0]) document.getElementById('app').removeChild(document.getElementsByTagName('audio')[0])
+    }
+  },
+  beforeCreate () {
+    if (parseInt(document.body.clientWidth) > 768) {
+      alert('请使用手机访问！！！')
+      location.href = '/'
+    }
+    getRem(720, 100)
+    window.onresize = function () {
+      getRem(750, 100)
+    }
+    function getRem (pwidth, prem) {
+      const html = document.getElementsByTagName('html')[0]
+      let oWidth = document.body.clientWidth || document.documentElement.clientWidth
+      html.style.fontSize = oWidth / pwidth * prem + 'px'
     }
   }
 }

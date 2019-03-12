@@ -9,21 +9,7 @@
     <div id="app"></div>
     <!-- built files will be auto injected -->
     <script>
-      window.onload = function(){
-        getRem(720,100)
-      };
-      if(parseInt(document.body.clientWidth)>768){
-        alert('请使用手机访问！！！')
-        location.href='/'
-      }
-      window.onresize = function(){
-        getRem(750,100)
-      };
-      function getRem(pwidth,prem){
-        var html = document.getElementsByTagName("html")[0];
-        var oWidth = document.body.clientWidth || document.documentElement.clientWidth;
-        html.style.fontSize = oWidth/pwidth*prem + "px";
-      }
+
     </script>
   </body>
 </html>
