@@ -19,7 +19,7 @@
         </p>
         <table>
           <tbody>
-          <tr v-for="(item,key) in list.songs">
+          <tr v-for="(item,key) in list.songs" :key=key>
             <td>{{key+1}}</td>
             <td>
             <span @click="addSong({type:1,info:{id:item.id,name:item.name,img:item.artists[0].img1v1Url,autor:item.artists[0].name}})">
@@ -48,7 +48,7 @@
         </p>
         <table>
           <tbody>
-          <tr v-for="(item,key) in list.playlists">
+          <tr v-for="(item,key) in list.playlists" :key=key>
             <td>{{key+1}}</td>
             <td>
             <span>
@@ -72,7 +72,7 @@
         </p>
         <table>
           <tbody>
-          <tr v-for="(item,key) in list.mvs">
+          <tr v-for="(item,key) in list.mvs" :key=key>
             <td>{{key+1}}</td>
             <td>
             <span>
@@ -96,7 +96,7 @@
         </p>
         <table>
           <tbody>
-          <tr v-for="(item,key) in list.djRadios">
+          <tr v-for="(item,key) in list.djRadios" :key=key>
             <td>{{key+1}}</td>
             <td>
             <span>
@@ -125,7 +125,7 @@
         </p>
         <table>
           <tbody>
-          <tr v-for="(item,key) in list.videos">
+          <tr v-for="(item,key) in list.videos" :key=key>
             <td>{{key+1}}</td>
             <td>
             <span>
