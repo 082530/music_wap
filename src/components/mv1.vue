@@ -12,7 +12,7 @@
     <!--相关推荐-->
     <div class="other">
       <ul>
-        <li v-for="item in otherlist1">
+        <li v-for="item in otherlist1" :key=item.name>
           <router-link :to="{name:parseInt(item.vid)==item.vid?'play':'play1',params:{id:item.vid}}">
             <div>
               <img :src="`${item.coverUrl}?param=140y90`" alt="">
