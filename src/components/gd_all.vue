@@ -10,7 +10,7 @@
         </p>
       <div class="item">
         <ul>
-          <li v-for="item in list">
+          <li v-for="item in list" :key=key>
             <router-link :to="{name:'gd',params: {id: item.id}}">
               <img :src="`${item.coverImgUrl}?param=200y200`" alt="">
               <p>{{item.name}}</p>
