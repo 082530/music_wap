@@ -15,7 +15,7 @@
       <div CLASS="gd">
         <p><router-link to="/gdAll">推荐歌单>></router-link></p>
         <ul>
-          <li v-for="item in gd_list">
+          <li v-for="item in gd_list" :key=item.name>
             <router-link :to="{name:'gd',params: {id: item.id}}">
               <span class="playcount"><i></i>{{`${item.playCount}`}}</span>
               <img :src="`${item.picUrl}?param=170y170`" alt="">
@@ -28,7 +28,7 @@
       <div CLASS="gd">
         <p><a>推荐新音乐</a></p>
         <ul>
-          <li v-for="item in new_m" @click="b(item)">
+          <li v-for="item in new_m" @click="b(item)" :key=item.name>
             <a href="javascript:">
               <img :src="`${item.song.album.picUrl}?param=170y170`" alt="">
               <p>
