@@ -18,7 +18,7 @@
       </p>
       <table>
         <tbody>
-        <tr v-for="(item,key) in list">
+        <tr v-for="(item,key) in list" :key=key>
           <td>{{key+1}}</td>
           <td>
             <span @click="addSong({type:1,info:{id:item.id,name:item.name,img:item.al.picUrl,autor:item.ar[0].name}})">
