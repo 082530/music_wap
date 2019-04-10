@@ -1,7 +1,7 @@
 <template>
     <div class="mv">
         <ul>
-          <li v-for="item in list">
+          <li v-for="item in list" :key=item.name>
             <router-link :to="{name:'play',params:{id:item.id}}">
               <img :src="`${item.cover}?param=170y170`" alt="">
               <p><span>{{item.name}}</span><b>--{{item.briefDesc}}</b></p>
